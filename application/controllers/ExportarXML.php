@@ -9,7 +9,7 @@ class ExportarXML extends CI_Controller {
 
 function exporta_cat() {
         
-        $categorias = $this->modelo_tv->Categorias();
+        $categorias = $this->Modelo_tv->Categorias();
         print_r($categorias);
         $xml = new SimpleXMLElement('<Productos_Por_Categoria/>');
         
@@ -40,7 +40,7 @@ function IncluyeArticulos($catxml,$idcateg) {
         
         
     
-    $ProXCat = $this->modelo_tv->ProductosCategoria($idcateg);
+    $ProXCat = $this->Modelo_tv->ProductosCategoria($idcateg);
     
     //echo "<pre>".print_r($ProXCat)."</pre>";
         $xmlarticulos = $catxml->addChild('articulos'); 
@@ -54,7 +54,7 @@ function IncluyeArticulos($catxml,$idcateg) {
             }           
         }
     
-    /*$articulos=$this->modelo_tv->SacaTodosProductos();
+    /*$articulos=$this->Modelo_tv->SacaTodosProductos();
         $xml = new SimpleXMLElement('<xml/>');
         
          foreach ($articulos as $key => $articulo) {    

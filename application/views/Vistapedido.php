@@ -19,9 +19,9 @@
                     </tr>
                 <?php foreach ($pedido["lineas"] as $lineapedido) :?>
                     <tr>
-                        <td><?= $this->modelo_tv->SacaNombrePro($lineapedido['producto_id'])?></td>
+                        <td><?= $this->Modelo_tv->SacaNombrePro($lineapedido['producto_id'])?></td>
                         <td><?= $lineapedido['cantidad']?></td>
-                        <td><?= $this->modelo_tv->SacaPrecioPro($lineapedido['producto_id'])?></td>
+                        <td><?= $this->Modelo_tv->SacaPrecioPro($lineapedido['producto_id'])?></td>
                         <td><?= $lineapedido['precio_ped']?> €</td>
                     </tr>
                 <?php endforeach; ?>

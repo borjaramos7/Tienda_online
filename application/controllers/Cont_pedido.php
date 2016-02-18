@@ -32,7 +32,7 @@ class Cont_pedido extends CI_Controller {
              "estado_ped"=>"Pendiente de envio",
                 "total_ped"=>$this->carrito->precio_total()
             );
-            $this->modelo_tv->InsertaPedido($datos_pedido);
+            $this->Modelo_tv->InsertaPedido($datos_pedido);
             $cod_pedido = $this->db->insert_id();
 
             foreach ($datos_carrito as $producto) {
@@ -41,8 +41,8 @@ class Cont_pedido extends CI_Controller {
                      'producto_id' => $producto['id'],
                      'cantidad' => $producto['cantidad'],
                         'precio_ped'=>$producto['total']);
-                $this->modelo_tv->InsLineaPedido($lineaped); 
-                 $this->modelo_tv->AjustaStock($producto['id'],$producto['cantidad']); 
+                $this->Modelo_tv->InsLineaPedido($lineaped); 
+                 $this->Modelo_tv->AjustaStock($producto['id'],$producto['cantidad']); 
             }
             $this->carrito->destroy();   
             //$this->MuestraPedido($cod_pedido);
@@ -52,9 +52,9 @@ class Cont_pedido extends CI_Controller {
             public function MuestraPedido() {
             $datos_usuario = $this->session->all_userdata();
             
-            $pedidos= $this->modelo_tv->SacaPedidosPorUser($datos_usuario['id']);
+            $pedidos= $this->Modelo_tv->SacaPedidosPorUser($datos_usuario['id']);
             foreach ($pedidos as $key=>$pedido) {
-                $pedidos[$key]['lineas']=$this->modelo_tv->SacaLinPedido($pedido['idpedido']);
+                $pedidos[$key]['lineas']=$this->Modelo_tv->SacaLinPedido($pedido['idpedido']);
             }           
              
             $this->CargaPlantilla(
@@ -64,12 +64,12 @@ class Cont_pedido extends CI_Controller {
             }
             
             public function AnulaPedido($idpedido) {
-                $this->modelo_tv->AnulaPedido($idpedido);
+                $this->Modelo_tv->AnulaPedido($idpedido);
                 redirect('/Cont_pedido/MuestraPedido','location',301);
             }
             
             protected function CargaPlantilla($cuerpo='') {
-                $categ=$this->modelo_tv->Categorias();
+                $categ=$this->Modelo_tv->Categorias();
                 $this->load->view('vista_principal',array(
                     'categorias'=>$categ,
                     'cuerpo'=>$cuerpo

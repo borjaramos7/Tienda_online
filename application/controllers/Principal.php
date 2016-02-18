@@ -5,7 +5,7 @@ class Principal extends CI_Controller {
 
 	public function index()
 	{
-		$producto=$this->modelo_tv->ProDestacados(); 
+		$producto=$this->Modelo_tv->ProDestacados(); 
 		$this->CargaPlantilla(
                         $this->load->view('productos', array(
                             'productos'=>$producto,
@@ -14,7 +14,7 @@ class Principal extends CI_Controller {
 	}
         
         public function VerCategoria($categoria_id) {
-                $producto=$this->modelo_tv->ProductosCategoria($categoria_id);
+                $producto=$this->Modelo_tv->ProductosCategoria($categoria_id);
 		$this->CargaPlantilla(
                         $this->load->view('productos', array(
                             'productos'=>$producto,
@@ -23,7 +23,7 @@ class Principal extends CI_Controller {
         }
         
         public function VerDestacado() {
-                $producto=$this->modelo_tv->ProDestacados(); 
+                $producto=$this->Modelo_tv->ProDestacados(); 
 		$this->CargaPlantilla(
                         $this->load->view('productos', array(
                             'productos'=>$producto,
@@ -32,7 +32,7 @@ class Principal extends CI_Controller {
         }
         
         /*public function VerProducto($id_pro) {
-                $prod=$this->modelo_tv->SacaProducto($id_pro); 
+                $prod=$this->Modelo_tv->SacaProducto($id_pro); 
 		$this->CargaPlantilla(
                         $this->load->view('unprod', array(
                             'producto'=>$prod,
@@ -46,7 +46,7 @@ class Principal extends CI_Controller {
                                     <i class="glyphicon glyphicon-shopping-cart"></i></a>*/
 
         protected function CargaPlantilla($cuerpo='') {
-            $categ=$this->modelo_tv->Categorias();
+            $categ=$this->Modelo_tv->Categorias();
             $this->load->view('vista_principal',array(
                 'categorias'=>$categ,
                 'cuerpo'=>$cuerpo

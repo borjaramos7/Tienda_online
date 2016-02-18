@@ -20,7 +20,7 @@ class Cont_user extends CI_Controller {
                 'error'=>$error),TRUE));//Darle funcionalidad
         }
         protected function CargaPlantilla($cuerpo='') {
-            $categ=$this->modelo_tv->Categorias();
+            $categ=$this->Modelo_tv->Categorias();
             $this->load->view('vista_principal',array(
                 'categorias'=>$categ,
                 'cuerpo'=>$cuerpo
@@ -51,7 +51,7 @@ class Cont_user extends CI_Controller {
                         'email'=>$this->input->post('correo'),
                         'estado'=>'ok');
                     
-                    $this->modelo_tv->AltaUsuario($datosuser);
+                    $this->Modelo_tv->AltaUsuario($datosuser);
                     echo "<div style='color:blue; border:2px red;'>!Te has registrado con exito¡</div>";
                 }
         }
@@ -68,7 +68,7 @@ class Cont_user extends CI_Controller {
         
         public function VerificaLogin() {
             $contr_login=md5($this->input->post('cont'));
-            $existe=$this->modelo_tv->CompUser(
+            $existe=$this->Modelo_tv->CompUser(
                     $this->input->post('user'),
                     $contr_login
                     );
@@ -79,7 +79,7 @@ class Cont_user extends CI_Controller {
                 
                 'username' => $this->input->post('user'),
                 'logged_in' => TRUE,
-                 'id'=>$this->modelo_tv->SacaIdUser($this->input->post('user'))
+                 'id'=>$this->Modelo_tv->SacaIdUser($this->input->post('user'))
                 );
                 $this->session->set_userdata($newdata);
                 
@@ -94,7 +94,7 @@ class Cont_user extends CI_Controller {
         }
 
         public function DarBajaUsuario() {
-            $this->modelo_tv->BajaUsuario();
+            $this->Modelo_tv->BajaUsuario();
             $this->LogOut();
         }
         
@@ -110,7 +110,7 @@ class Cont_user extends CI_Controller {
         }
         
         public function CompExisteNombreus() {
-            $existenombre=$this->modelo_tv->CompNombreUser($this->input->post('nombreuser'));
+            $existenombre=$this->Modelo_tv->CompNombreUser($this->input->post('nombreuser'));
             $this->form_validation->set_message('CompExisteNombreus', 'El nombre de usuario ya existe');
             
             if ($existenombre) {
@@ -120,7 +120,7 @@ class Cont_user extends CI_Controller {
         }
         
         public function CargaDatosUs() {
-            $user=$this->modelo_tv->SacaUsuario($this->session->userdata('username')); 
+            $user=$this->Modelo_tv->SacaUsuario($this->session->userdata('username')); 
 		$this->CargaPlantilla(
                         $this->load->view('Mod_user', array(
                             'usuarios'=>$user,
@@ -149,7 +149,7 @@ class Cont_user extends CI_Controller {
                         'email'=>$this->input->post('correo'),
                         'estado'=>'ok');
                     
-                    $this->modelo_tv->ModificaUsuario($datosuser);
+                    $this->Modelo_tv->ModificaUsuario($datosuser);
                     redirect('', 'location', 301);
                 }
         }

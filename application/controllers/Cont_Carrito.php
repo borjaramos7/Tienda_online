@@ -9,7 +9,7 @@ class Cont_Carrito extends CI_Controller {
 	}
         
         public function VerProducto($id_pro) {
-                $prod=$this->modelo_tv->SacaProducto($id_pro); 
+                $prod=$this->Modelo_tv->SacaProducto($id_pro); 
 		$this->CargaPlantilla(
                         $this->load->view('unprod', array(
                             'producto'=>$prod,
@@ -18,7 +18,7 @@ class Cont_Carrito extends CI_Controller {
         }
         
          public function MeteCarrito() {
-             //$prod=$this->modelo_tv->SacaProducto($this->input->post('idpro')); 
+             //$prod=$this->Modelo_tv->SacaProducto($this->input->post('idpro')); 
              $datosprod=array(
                 "id"=>$this->input->post('idpro'),
 		"cantidad"=>$this->input->post('cantidad'),
@@ -34,7 +34,7 @@ class Cont_Carrito extends CI_Controller {
             $datos_carrito=$this->carrito->get_content();
             $pretotal=$this->carrito->precio_total();
             foreach ($datos_carrito as $key => $value) {
-               $datos_carrito[$key]['nombrepro']=$this->modelo_tv->SacaNombrePro(($value['id'])); 
+               $datos_carrito[$key]['nombrepro']=$this->Modelo_tv->SacaNombrePro(($value['id'])); 
             }
            $this->CargaPlantilla(
                         $this->load->view('Vistacarrito',array(
@@ -61,7 +61,7 @@ class Cont_Carrito extends CI_Controller {
                  
             }
            protected function CargaPlantilla($cuerpo='') {
-            $categ=$this->modelo_tv->Categorias();
+            $categ=$this->Modelo_tv->Categorias();
             $this->load->view('vista_principal',array(
                 'categorias'=>$categ,
                 'cuerpo'=>$cuerpo
@@ -72,5 +72,5 @@ class Cont_Carrito extends CI_Controller {
              
              
              
-           //$prod=$this->modelo_tv->SacaProducto($id_pro); 
+           //$prod=$this->Modelo_tv->SacaProducto($id_pro); 
            
