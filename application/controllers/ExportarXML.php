@@ -10,7 +10,6 @@ class ExportarXML extends CI_Controller {
 function exporta_cat() {
         
         $categorias = $this->Modelo_tv->Categorias();
-        print_r($categorias);
         $xml = new SimpleXMLElement('<Productos_Por_Categoria/>');
         
         foreach ($categorias as $categoria) {    
@@ -26,12 +25,11 @@ function exporta_cat() {
         
          
         
-        Header('Content-type: octec-stream');
-        
-        $nomarch="Articulos_Por_Categoria";
-        // Guardando el xml
-        $xml->asXML("C:/xampp/htdocs/PracticaB2/asset/".$nomarch. ".xml");
-        redirect('','location',301); 
+        Header('Content-type: text/xml; charset=utf-8');
+        Header('Content-type: octec/stream');
+        Header('Content-disposition: filename="productosXcategorias.xml"');
+        print($xml->asXML());
+        //redirect('','location',301); 
     }
 
 
@@ -42,7 +40,7 @@ function IncluyeArticulos($catxml,$idcateg) {
     
     $ProXCat = $this->Modelo_tv->ProductosCategoria($idcateg);
     
-    //echo "<pre>".print_r($ProXCat)."</pre>";
+    
         $xmlarticulos = $catxml->addChild('articulos'); 
         
         foreach ($ProXCat as $articulo) {
@@ -54,21 +52,5 @@ function IncluyeArticulos($catxml,$idcateg) {
             }           
         }
     
-    /*$articulos=$this->Modelo_tv->SacaTodosProductos();
-        $xml = new SimpleXMLElement('<xml/>');
-        
-         foreach ($articulos as $key => $articulo) {    
-             $art = $xml->addChild('articulo');
-            foreach ($articulo as $key => $value) {
-                $art->addChild($key, $value);
-            } 
-        } 
-        
-        Header('Content-type: octec-stream');
-        
-        $nomarch="articulos";
-
-        $xml->asXML("C:/xampp/htdocs/PracticaB2/asset/".$nomarch. ".xml");
-        redirect('','location',301); */
     }
 }

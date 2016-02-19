@@ -27,29 +27,53 @@ class Principal extends CI_Controller {
 		$this->CargaPlantilla(
                         $this->load->view('productos', array(
                             'productos'=>$producto,
-                        ), TRUE)
+                        ), TRUE),"Productos Destacados"
                         );
         }
         
-        /*public function VerProducto($id_pro) {
-                $prod=$this->Modelo_tv->SacaProducto($id_pro); 
-		$this->CargaPlantilla(
-                        $this->load->view('unprod', array(
-                            'producto'=>$prod,
+        /*public function mostrar($categoria, $page=0) {
+            $config['base_url'] = base_url() . 'index.php/Principal/mostrar/' . $categoria;
+            $config['uri_segment']=4;
+            $config['total_rows'] = $this->Modelo_tv->CuentaProductosXCat($categoria);
+            $config['per_page'] = 3;
+            $config['num_links'] = 1;
+            $config['full_tag_open'] = '<ul class="pagination">';
+            $config['full_tag_close'] = '</ul>';
+            $config['num_tag_open'] = '<li>';
+            $config['num_tag_close'] = '</li>';
+            $config['cur_tag_open'] = '<li class="active"><span>';
+            $config['cur_tag_close'] = '</span></li>';
+            $config['prev_tag_open'] = '<li>';
+            $config['prev_tag_close'] = '</li>';
+            $config['next_tag_open'] = '<li>';
+            $config['next_tag_close'] = '</li>';
+            $config['first_link'] = 'Primero';
+            $config['prev_link'] = 'Anterior';
+            $config['last_link'] = 'Último';
+            $config['next_link'] = 'Siguiente';
+            $config['first_tag_open'] = '<li>';
+            $config['first_tag_close'] = '</li>';
+            $config['last_tag_open'] = '<li>';
+            $config['last_tag_close'] = '</li>';
+
+            $this->pagination->initialize($config);
+            //$producto=$this->Modelo_tv->ProductosCategoria($categoria);
+            $producto = array('pro' => $this->Modelo_tv->ProductosCategoria($categoria, $page, $config['per_page']),
+            'paginacion' => $this->pagination->create_links());
+            echo "<pre>".print_r($producto)."</pre>";
+            $this->CargaPlantilla(
+                        $this->load->view('productos', array(
+                            'productos'=>$producto,
                         ), TRUE)
                         );
-        }*/
-        
-        /* Codigo de carrito
-         * <a href="<?=base_url()?>index.php/Cont_Carrito/MeteCarrito/<?=$prod->id?>/"
-                                   class="btn btn-default add-to-cart">
-                                    <i class="glyphicon glyphicon-shopping-cart"></i></a>*/
+            }*/
 
-        protected function CargaPlantilla($cuerpo='') {
+        protected function CargaPlantilla($cuerpo='',$encabezado="") {
             $categ=$this->Modelo_tv->Categorias();
             $this->load->view('vista_principal',array(
                 'categorias'=>$categ,
-                'cuerpo'=>$cuerpo
+                'cuerpo'=>$cuerpo,
+                'encabezado'=>$encabezado
                 ));            
         }
 

@@ -92,11 +92,10 @@
 
                 <div class="row">
                     <?php if (isset($cuerpo)) {
+                        echo "<p style='text-align:center; color:blue'><b>".$encabezado."</b></p>";
                         echo $cuerpo;
                     } else {
-                        $cuerpo=
-                        
-                        $this->load->view('destacados');
+                        $cuerpo=$this->load->view('destacados');
                     }
                     ?>
                     

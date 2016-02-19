@@ -1,5 +1,5 @@
 <?php
-class modelo_tv extends CI_Model {
+class Modelo_tv extends CI_Model {
 
     public function __construct() {
         parent::__construct();
@@ -30,7 +30,13 @@ class modelo_tv extends CI_Model {
             return $pronom->row()->stock;
         }
         
-        public function ProductosCategoria($categoria_id) {
+         /*Antes paginar   public function ProductosCategoria($categoria, $page, $per_page)
+    {
+        $qr = $this->db->get_where('producto', array('categoria_idcat'=>$categoria, 'oculto'=>0), $per_page,$page);
+        return $qr->result_array();
+    }*/
+        
+           public function ProductosCategoria($categoria_id) {
             $query="select * from producto where categoria_idcat= ".$categoria_id." and oculto=0 ";
             $procat=$this->db->query($query);
             return $procat->result_array();
@@ -141,6 +147,20 @@ class modelo_tv extends CI_Model {
         public function ModificaUsuario($nuevosdatos) {
             $this->db->where('nombreus',$this->session->userdata('username'));
             $this->db->update('usuario', $nuevosdatos); 
+        }
+        
+        public function CuentaProductosXCat($idcat) {
+            
+            $query="select count(*) as 'total' from producto where categoria_idcat= ".$idcat."";
+            $numprods=$this->db->query($query);
+            return $numprods->row()->total;
+        }
+        
+        public function CuentaProductosDes() {
+            
+            $query="select count(*) as 'total' from producto where destacado=1";
+            $numprods=$this->db->query($query);
+            return $numprods->row()->total;
         }
 }
 
