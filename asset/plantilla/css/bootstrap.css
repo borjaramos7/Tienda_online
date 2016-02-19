@@ -56,6 +56,20 @@ b,
 strong {
   font-weight: bold;
 }
+#underline {
+  background: #EEE;
+  text-align: center;
+}
+h1.underline {
+  text-align: center;
+  font-family: georgia, "times new roman", times, serif;
+  font-weight: lighter;
+}
+#underline p {
+    text-align: center;
+  font-family: "trebuchet ms", verdana, sans-serif;
+  font-size: 0.9em;
+}
 dfn {
   font-style: italic;
 }

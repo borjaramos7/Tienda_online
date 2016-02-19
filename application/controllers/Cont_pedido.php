@@ -68,12 +68,14 @@ class Cont_pedido extends CI_Controller {
                 redirect('/Cont_pedido/MuestraPedido','location',301);
             }
             
-            protected function CargaPlantilla($cuerpo='') {
-                $categ=$this->Modelo_tv->Categorias();
-                $this->load->view('vista_principal',array(
-                    'categorias'=>$categ,
-                    'cuerpo'=>$cuerpo
-                    ));            
-            }
+            protected function CargaPlantilla($cuerpo='',$encabezado="") {
+            $categ=$this->Modelo_tv->Categorias();
+            $this->load->view('vista_principal',array(
+                'categorias'=>$categ,
+                'cuerpo'=>$cuerpo,
+                'encabezado'=>$encabezado
+                ));   
+           }
+          
           
 }

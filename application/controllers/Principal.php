@@ -18,7 +18,7 @@ class Principal extends CI_Controller {
 		$this->CargaPlantilla(
                         $this->load->view('productos', array(
                             'productos'=>$producto,
-                        ), TRUE)
+                        ), TRUE),"Moviles ".$this->Modelo_tv->SacaNombreCat($categoria_id)
                         );
         }
         

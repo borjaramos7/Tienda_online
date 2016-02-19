@@ -17,15 +17,17 @@ class Cont_user extends CI_Controller {
         public function Login($error=""){
                     $this->CargaPlantilla(
                             $this->load->view('login',array(
-                'error'=>$error),TRUE));//Darle funcionalidad
+                'error'=>$error),TRUE),"Introduce tus datos de usuario");
         }
-        protected function CargaPlantilla($cuerpo='') {
+        protected function CargaPlantilla($cuerpo='',$encabezado="") {
             $categ=$this->Modelo_tv->Categorias();
             $this->load->view('vista_principal',array(
                 'categorias'=>$categ,
-                'cuerpo'=>$cuerpo
-                ));            
-        }
+                'cuerpo'=>$cuerpo,
+                'encabezado'=>$encabezado
+                ));   
+           }
+          
         
         public function VerificaDatosUsuario()
         {

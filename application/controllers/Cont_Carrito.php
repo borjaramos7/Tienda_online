@@ -13,7 +13,7 @@ class Cont_Carrito extends CI_Controller {
 		$this->CargaPlantilla(
                         $this->load->view('unprod', array(
                             'producto'=>$prod,
-                        ), TRUE)
+                        ), TRUE),$prod->nombrepro
                         );
         }
         
@@ -60,13 +60,14 @@ class Cont_Carrito extends CI_Controller {
                 }
                  
             }
-           protected function CargaPlantilla($cuerpo='') {
+           protected function CargaPlantilla($cuerpo='',$encabezado="") {
             $categ=$this->Modelo_tv->Categorias();
             $this->load->view('vista_principal',array(
                 'categorias'=>$categ,
-                'cuerpo'=>$cuerpo
-                ));            
-        }
+                'cuerpo'=>$cuerpo,
+                'encabezado'=>$encabezado
+                ));   
+           }
           
 }     
              

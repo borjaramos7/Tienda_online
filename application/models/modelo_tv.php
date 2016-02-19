@@ -12,6 +12,12 @@ class Modelo_tv extends CI_Model {
             return $cat->result_array();
         }
         
+        public function SacaNombreCat($id) {
+            $query="select nombrecat from categoria where idcat=".$id."";
+            $catnom=$this->db->query($query);
+            return $catnom->row()->nombrecat;
+        }
+        
         public function SacaNombrePro($id) {
             $query="select nombrepro from producto where id= ".$id." and oculto=0";
             $pronom=$this->db->query($query);

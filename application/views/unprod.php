@@ -15,10 +15,9 @@
             <div class="thumbnail">
                 <div class="caption">
                     <p class="pull-right">Stock: <?=$producto->stock?></p>
-                    <p class="pull-left"><?=$producto->nombrepro?></p><br>
                     
-                    <h4 class="pull-left">Especificaciones</h4>
-                    <p class="pull-left"><?=$producto->descripcion?></p>
+                    <h4 class="pull-left">Especificaciones</h4><br><br>
+                    <p><?=$producto->descripcion?></p>
                 </div>
             </div>
             <form method="post" action="<?= site_url('Cont_Carrito/MeteCarrito')?>">

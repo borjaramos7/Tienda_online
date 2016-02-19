@@ -92,7 +92,12 @@
 
                 <div class="row">
                     <?php if (isset($cuerpo)) {
-                        echo "<p style='text-align:center; color:blue'><b>".$encabezado."</b></p>";
+                        echo " <div  id='underline'>
+                            <h1 style='text-align:center; color:#0076DC'>
+                            <b>".$encabezado."</b></h1>
+                         </div>";
+                        
+                        //<p style='text-align:center; color:blue'><b>".$encabezado."</b></p>
                         echo $cuerpo;
                     } else {
                         $cuerpo=$this->load->view('destacados');

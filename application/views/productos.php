@@ -4,16 +4,15 @@
 </head>
 <body>
     <?php foreach ($productos as $producto) : ?>
-    <!--h1 class="lead">$titulo</h1-->
-        <div class="col-sm-3 col-lg-3 col-md-3">
+        <div style="width: 25%; height: 15%;" class="col-sm-2 col-lg-2 col-md-2">
             <div class="thumbnail">
                 <img src="<?= base_url()."asset/img/".$producto['imagenpro']?>" alt="">
                 <div class="caption">
                     <h4 class="pull-right"><?=$producto['precio']?> €</h4>
-                     <?php echo anchor("Cont_Carrito/VerProducto/{$producto['id']}",$producto['nombrepro']);?></a>
+                     <?php echo anchor("Cont_Carrito/VerProducto/{$producto['id']}",$producto['nombrepro']);?></a><br>
                     </h4>
-                    <p><?=$producto['anuncio']?></p>
-                    <p class="pull-right">Stock: <?=$producto['stock']?></p>
+                    <p class="text-left"><?=$producto['anuncio']?></p><br>
+                    <p class="text-left">Stock: <?=$producto['stock']?></p>
                     <!--a href="" class="btn btn-default" aria-label="Left Align">
                             <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
                     </a-->
