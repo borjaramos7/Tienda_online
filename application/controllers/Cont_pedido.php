@@ -63,6 +63,13 @@ class Cont_pedido extends CI_Controller {
                         ),TRUE));
             }
             
+            public function PdfPedido($idpedido) {
+                $this->pdf->Prueba($idpedido);
+                //$this->Modelo_tv->AnulaPedido($idpedido);
+                //redirect('/Cont_pedido/MuestraPedido','location',301);
+               
+            }
+            
             public function AnulaPedido($idpedido) {
                 $this->Modelo_tv->AnulaPedido($idpedido);
                 redirect('/Cont_pedido/MuestraPedido','location',301);

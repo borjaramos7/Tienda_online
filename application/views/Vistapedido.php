@@ -36,7 +36,10 @@
         <div class="col-md-3 danger" style="text-align:center">
         <a  class="list-group-item danger" 
         <?php echo anchor("Cont_pedido/AnulaPedido/{$pedido['idpedido']}","Anular Pedido");?></a></div>
-         <?php endif; ?>   
+         <?php endif; ?>
+        <div class="col-md-3 danger" style="text-align:center">
+        <a  class="list-group-item danger" 
+        <?php echo anchor("Cont_pedido/PdfPedido/{$pedido['idpedido']}","Pedido en PDF");?></a></div>
         </div>
         <br><br>
     <?php endforeach; ?>  
