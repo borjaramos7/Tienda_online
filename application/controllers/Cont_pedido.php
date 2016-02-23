@@ -64,7 +64,23 @@ class Cont_pedido extends CI_Controller {
             }
             
             public function PdfPedido($idpedido) {
-                $this->pdf->Prueba($idpedido);
+                $pedido=$this->Modelo_tv->SacaPedidoPorID($idpedido);
+                //$pedido['lineas']=$this->Modelo_tv->SacaLinPedido($pedido['idpedido']);
+                $lineas=$this->Modelo_tv->SacaLinPedido($pedido['idpedido']);
+                
+                foreach ($lineas as $key=>$linea)
+                {
+                    $lineas[$key]['nombrepro']=$this->Modelo_tv->SacaNombrePro($linea['producto_id']);
+                    $lineas[$key]['preciopro']=$this->Modelo_tv->SacaPrecioPro($linea['producto_id']);
+                    //$linea[$key]['nombrepro']=$this->Modelo_tv->SacaNombrePro( $linea[$key]['producto_id']);
+                }
+                
+                
+                /*echo "<pre>";
+                echo print_r($lineas);
+                echo "</pre>";*/
+                
+                $this->pdf->PedidoPdf($pedido,$lineas);
                 //$this->Modelo_tv->AnulaPedido($idpedido);
                 //redirect('/Cont_pedido/MuestraPedido','location',301);
                

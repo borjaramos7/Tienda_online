@@ -5,18 +5,13 @@
         <group>
             <file>file:/C:/xampp/htdocs/Tienda_online/application/views/Vistapedido.php</file>
             <file>file:/C:/xampp/htdocs/Tienda_online/application/controllers/Cont_user.php</file>
-            <file>file:/C:/xampp/htdocs/Tienda_online/application/views/productos.php</file>
-            <file>file:/C:/xampp/htdocs/Tienda_online/application/controllers/Principal.php</file>
-            <file>file:/C:/xampp/htdocs/Tienda_online/application/controllers/Cont_Carrito.php</file>
-            <file>file:/C:/xampp/htdocs/Tienda_online/application/views/vista_principal.php</file>
-            <file>file:/C:/xampp/htdocs/Tienda_online/application/libraries/Pdf.php</file>
-            <file>file:/C:/xampp/htdocs/Tienda_online/application/config/autoload.php</file>
-            <file>file:/C:/xampp/htdocs/Tienda_online/application/controllers/ExportarXML.php</file>
             <file>file:/C:/xampp/htdocs/Tienda_online/application/controllers/Cont_pedido.php</file>
-            <file>file:/C:/xampp/htdocs/Tienda_online/application/views/unprod.php</file>
-            <file>file:/C:/xampp/htdocs/Tienda_online/application/views/Mod_user.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda_online/application/controllers/ExportarXML.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda_online/application/controllers/Cont_Carrito.php</file>
             <file>file:/C:/xampp/htdocs/Tienda_online/application/config/config.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda_online/application/libraries/Pdf.php</file>
             <file>file:/C:/xampp/htdocs/Tienda_online/Apuntes</file>
+            <file>file:/C:/xampp/htdocs/Tienda_online/application/config/autoload.php</file>
             <file>file:/C:/xampp/htdocs/Tienda_online/application/models/Modelo_tv.php</file>
         </group>
     </open-files>
