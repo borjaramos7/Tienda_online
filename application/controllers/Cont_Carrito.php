@@ -40,7 +40,7 @@ class Cont_Carrito extends CI_Controller {
                         $this->load->view('Vistacarrito',array(
                         'datos_car'=>$datos_carrito,
                             'precio_total'=>$pretotal,
-                            ),TRUE));
+                            ),TRUE),"Tienes en tu carrito...");
             } 
             public function LimpiaCarrito() {
                 $this->carrito->destroy();

@@ -71,6 +71,16 @@ class Modelo_tv extends CI_Model {
             $this->db->insert('usuario', $newusuario); 
         }
         
+        public function AddCategoria($cat){
+            $this->db->insert('categoria', $cat);
+            
+            return $this->db->insert_id();
+        }
+        
+        public function AddProducto($cat){
+            $this->db->insert('categoria', $cat); 
+        }
+        
         public function CompUser($usuario,$contr) {
             
             $query="select count(*) as 'total' from usuario where nombreus= '".$usuario."' and contrasena= '".$contr."'"
