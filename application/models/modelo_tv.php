@@ -77,8 +77,8 @@ class Modelo_tv extends CI_Model {
             return $this->db->insert_id();
         }
         
-        public function AddProducto($cat){
-            $this->db->insert('categoria', $cat); 
+        public function AddProducto($datospro){
+            $this->db->insert('producto', $datospro); 
         }
         
         public function CompUser($usuario,$contr) {

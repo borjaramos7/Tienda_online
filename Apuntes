@@ -12,9 +12,10 @@ Controlador carrito **
 Llamada a mostrar carrito en un boton**
 Redirect de carrito
 controlar stock**
-importar xml
+importar xml**
 pagina de error en login incorrecto**
-Pedidos--PDF y correo y mejora la vista
+Pedidos--correo y mejora la vista
 PASAR ENCABEZADO**
 Libreria PDF-- dejarlo mas presentable
-Importar-- procesar archivo 
+Importarexcel--vas creando procesaexcel
+comentar y generar documentacion

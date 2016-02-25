@@ -54,33 +54,34 @@ function IncluyeArticulos($catxml,$idcateg) {
     
     }
     public function importar() {
+        
+        $action = "/Exp_impXML/Procesa";
         $this->CargaPlantilla(
-                        $this->load->view('importarXML',array(
-                        "" => ""
+                        $this->load->view('importarDatos',array(
+                        'action' => $action
                             ),TRUE),"Selecciona un archivo para importar");
         /*$cuerpo = $this->load->view('importarXML', Array('' => ''), true);
         $this->load->view('View_plantilla', Array('cuerpo' => $cuerpo, 'homeactive' => 'active', 'titulo' => 'Importación en XML'));*/
     }
 
-    public function ProcesaArchivo() {
+    public function Procesa() {
 
-        $archivo = $_FILES['archivo'];
+        $archivo = $_FILES['uploadedfile'];
 
         if (file_exists($archivo['tmp_name'])) {
             $contentXML = utf8_encode(file_get_contents($archivo['tmp_name']));
             $xml = simplexml_load_string($contentXML);
 
-            $this->InsertFromXML($xml);
+            $this->InsertaXMLEnBBDD($xml);
 
-            $cuerpo = $this->load->view('View_importacionXMLCorrecta', '', true);
-            $this->load->view('View_plantilla', Array('cuerpo' => $cuerpo, 'titulo' => 'Importación en XML', 'homeactive' => 'active'));
+            $this->CargaPlantilla(" ","Has importado los datos con exito");
         } else {
-            exit('Error abriendo el archivo XML');
+            exit('Los datos no hasn sido importados satisfactoriamente');
         }
     }
 
-    //Función que crea un array con los datos que lee desde el xml para insertarlos
-    function InsertFromXML($xml) {
+    
+    function InsertaXMLEnBBDD($xml) {
 
         foreach ($xml as $categoria) {
 
@@ -88,13 +89,13 @@ function IncluyeArticulos($catxml,$idcateg) {
             $cat['nombrecat'] = (string) $categoria->nombrecat;
             $cat['descrip_cat'] = (string) $categoria->descrip_cat;
 
-            $categoria_id = $this->Modelo_tv->AddCategoria($cat);//Guardamos su id para poder insertar las camisetas en esa categoría
+            $categoria_id = $this->Modelo_tv->AddCategoria($cat);
 
             foreach ($categoria->articulos->articulo as $articulo) {
                 
                 
                 $pro['categoria_idcat'] = $categoria_id;
-                $pro['cod_pro'] = (string) $articulo->cod_pro;
+                $pro['codpro'] = (string) $articulo->codpro;
                 $pro['nombrepro'] = (string) $articulo->nombrepro;
                 $pro['precio'] = (string) $articulo->precio;
                 $pro['descuento'] = (string) $articulo->descuento;

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<categorias>
+	<categoria>
+        <codcat>7</codcat>
+        <nombrecat>bq</nombrecat>
+        <descrip_cat>Moviles BQ</descrip_cat>
+        <articulos>
+            <articulo>
+                <codpro>130</codpro>
+                <nombrepro>BQ 5</nombrepro>
+                <precio>57.00</precio>
+                <descuento>10.00</descuento>
+                <imagen> </imagen>
+                <iva>21.00</iva>
+                <descripcion>Tamaño: 134 x 90,6 x 9,31 mm.   Pantalla: 4.5 pulgadas.  Procesador: 1 nucleo 1.8 GHz</descripcion>
+                <destacado>1</destacado>
+                <oculto>0</oculto>
+                <fechacom>2016-01-01</fechacom>
+                <fechafin>2016-12-31</fechafin>
+                <stock>80</stock>
+            </articulo>
+						
+        </articulos>
+    </categoria>
+</categorias>
