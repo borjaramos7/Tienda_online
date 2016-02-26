@@ -81,7 +81,8 @@ class Cont_user extends CI_Controller {
                 
                 'username' => $this->input->post('user'),
                 'logged_in' => TRUE,
-                 'id'=>$this->Modelo_tv->SacaIdUser($this->input->post('user'))
+                 'id'=>$this->Modelo_tv->SacaIdUser($this->input->post('user')),
+                 'correo'=>$this->Modelo_tv->SacaEmailUser($this->input->post('user'))
                 );
                 $this->session->set_userdata($newdata);
                 

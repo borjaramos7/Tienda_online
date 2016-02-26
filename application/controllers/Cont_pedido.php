@@ -25,28 +25,39 @@ class Cont_pedido extends CI_Controller {
         public function Finaliza_Compra() {
             $datos_usuario = $this->session->all_userdata();
             $datos_carrito = $this->carrito->get_content();
-            //print_r($datos_carrito);
-            $datos_pedido = array(
-            "fecha_pedido" => date("Y-m-d"),
-             "usuario_iduser" => $datos_usuario['id'],
-             "estado_ped"=>"Pendiente de envio",
-                "total_ped"=>$this->carrito->precio_total()
-            );
-            $this->Modelo_tv->InsertaPedido($datos_pedido);
-            $cod_pedido = $this->db->insert_id();
+            foreach ($datos_carrito as $producto)
+            {
+                if ($producto['cantidad']>$this->Modelo_tv->SacaStockPro($producto['id'])){
+                    $this->CargaPlantilla
+                    (" ","La cantidad solicitada de ".$this->Modelo_tv->SacaNombrePro($producto['id'])." es superior a su stock");}
+                else{
+                //print_r($datos_carrito);
+                $datos_pedido = array(
+                "fecha_pedido" => date("Y-m-d"),
+                 "usuario_iduser" => $datos_usuario['id'],
+                 "estado_ped"=>"Pendiente de envio",
+                    "total_ped"=>$this->carrito->precio_total()
+                );
+                $this->Modelo_tv->InsertaPedido($datos_pedido);
+                $cod_pedido = $this->db->insert_id();
 
-            foreach ($datos_carrito as $producto) {
-                    $lineaped = array(
-                    'pedido_idpedido' => $cod_pedido,
-                     'producto_id' => $producto['id'],
-                     'cantidad' => $producto['cantidad'],
-                        'precio_ped'=>$producto['total']);
-                $this->Modelo_tv->InsLineaPedido($lineaped); 
-                 $this->Modelo_tv->AjustaStock($producto['id'],$producto['cantidad']); 
-            }
-            $this->carrito->destroy();   
-            //$this->MuestraPedido($cod_pedido);
-        }    
+                foreach ($datos_carrito as $producto) {
+                        $lineaped = array(
+                        'pedido_idpedido' => $cod_pedido,
+                         'producto_id' => $producto['id'],
+                         'cantidad' => $producto['cantidad'],
+                            'precio_ped'=>$producto['total']);
+                    $this->Modelo_tv->InsLineaPedido($lineaped); 
+                     $this->Modelo_tv->AjustaStock($producto['id'],$producto['cantidad']); 
+                }
+                $this->PdfPedido($cod_pedido,true);
+                $this->EnviarCor($cod_pedido);
+                $this->carrito->destroy();
+                }
+                //$this->MuestraPedido($cod_pedido);
+        }
+        
+            }    
 
 
             public function MuestraPedido() {
@@ -63,7 +74,7 @@ class Cont_pedido extends CI_Controller {
                         ),TRUE));
             }
             
-            public function PdfPedido($idpedido) {
+            public function PdfPedido($idpedido,$escorreo=false) {
                 $pedido=$this->Modelo_tv->SacaPedidoPorID($idpedido);
                 //$pedido['lineas']=$this->Modelo_tv->SacaLinPedido($pedido['idpedido']);
                 $lineas=$this->Modelo_tv->SacaLinPedido($pedido['idpedido']);
@@ -79,8 +90,8 @@ class Cont_pedido extends CI_Controller {
                 /*echo "<pre>";
                 echo print_r($lineas);
                 echo "</pre>";*/
+                $this->pdf->PedidoPdf($pedido,$lineas,$escorreo);
                 
-                $this->pdf->PedidoPdf($pedido,$lineas);
                 //$this->Modelo_tv->AnulaPedido($idpedido);
                 //redirect('/Cont_pedido/MuestraPedido','location',301);
                
@@ -99,6 +110,34 @@ class Cont_pedido extends CI_Controller {
                 'encabezado'=>$encabezado
                 ));   
            }
+           
+           public function EnviarCor($codigopedido)
+	{
+               $datos_usuario = $this->session->all_userdata();
+               
+		$this->email->from('aula4@iessansebastian.com', 'Pedido Buyphone');
+		$this->email->to($datos_usuario['correo']); 
+		//$this->email->cc('another@another-example.com'); 
+		//$this->email->bcc('them@their-example.com'); 
+		
+		$this->email->subject('Datos del pedido');
+		$this->email->attach('asset/pedidocorreo/pedido.pdf');
+		
+		if ( $this->email->send() )
+		{
+			/*$cuerpo= $this->load->view('Compra_Realizada','', true);
+                        $this->load->view('Index', Array('cuerpo' => $cuerpo));*/
+                    echo "Correo enviado";
+		}
+		else 
+		{
+			echo "</pre>\n\n**** Compra realizada , fallo al enviar correo ****</pre>\n";
+		}
+		
+		//echo $this->email->print_debugger();
+                 //Mostramos compra realizada.
+            
+	}
           
           
 }

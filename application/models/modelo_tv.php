@@ -104,6 +104,12 @@ class Modelo_tv extends CI_Model {
              return $idusuario->row()->iduser;
         }
         
+        public function SacaEmailUser($nomuser) {
+             $query="select email from usuario where nombreus= '".$nomuser."'";
+             $emailusuario=$this->db->query($query);
+             return $emailusuario->row()->email;
+        }
+        
         public function CompNombreUser($usuario) {
             
             $query="select count(*) as 'total' from usuario where nombreus= '".$usuario."'";

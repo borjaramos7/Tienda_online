@@ -3,8 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Pdf extends FPDF {
         
-        public function PedidoPdf($pedido,$lineas) {
+        public function PedidoPdf($pedido,$lineas,$enviar=false) {
             
+                
                 
                 $pdf= new FPDF();
                 $pdf->AddPage();
@@ -35,8 +36,10 @@ class Pdf extends FPDF {
                 $pdf->Ln();
                 $pdf->Ln();
                 $pdf->Cell(100,7,"* Impuestos y descuento aplicados ",0);
-
+                if ($enviar==false)
                 $pdf->Output();
+                else 
+                    $pdf->Output('F','asset/pedidocorreo/pedido.pdf',true);
         }
         
  

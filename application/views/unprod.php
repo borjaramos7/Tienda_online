@@ -9,7 +9,6 @@
 <head>
 </head>
 <body>
-       
         <img style="" src="<?= base_url()."asset/img/".$producto->imagenpro?>" alt="">
         <div class="col-sm-6 col-lg-6 col-md-8">
             <div class="thumbnail">
@@ -29,12 +28,14 @@
                  <p class="pull">Total: 
                      <input type="text" readonly="" name="prefi"
                 value="<?= PrecioFinal($producto->precio,$producto->descuento,$producto->iva);?>"></p>
-                 
+                 <?php if ($producto->stock!=0) :?>
                  <h4 class="pull-left">Cantidad: </h4>
                  <input class="input-sm" name="cantidad" type="number" value="1" 
                      max="<?=$producto->stock?>"   min="1" max size="2">
                  <input type="submit" value="Añadir al carrito">
                  <form>
+                 <?php else: echo "Este producto esta agotado en estos momentos";
+                 endif;?>
         </div>
     
 </body>
