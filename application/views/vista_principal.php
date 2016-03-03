@@ -84,11 +84,11 @@
                     <br><br>
                     <p class="lead">Datos a exportar e importar</p>
                     <a  class="list-group-item"
-                    <?php echo anchor("Exp_impXML/exporta_cat","Exporta Articulos XML");?></a>
+                    <?php echo anchor("Exp_impXML/exporta_cat","Exportar Articulos XML");?></a>
                     <a  class="list-group-item"
                     <?php echo anchor("Exp_impXML/importar","Importar Articulos XML");?></a>
                     <a  class="list-group-item"
-                    <?php echo anchor("Exp_impexcel/exportaexcel","Exporta Articulos EXCEL");?></a>
+                    <?php echo anchor("Impexcel/importaexcel","Importar Articulos EXCEL");?></a>
                 </div>
             </div>
 

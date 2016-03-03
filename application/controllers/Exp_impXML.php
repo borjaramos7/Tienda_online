@@ -59,7 +59,7 @@ function IncluyeArticulos($catxml,$idcateg) {
         $this->CargaPlantilla(
                         $this->load->view('importarDatos',array(
                         'action' => $action
-                            ),TRUE),"Selecciona un archivo para importar");
+                            ),TRUE),"Selecciona un archivo para importar(XML)");
         /*$cuerpo = $this->load->view('importarXML', Array('' => ''), true);
         $this->load->view('View_plantilla', Array('cuerpo' => $cuerpo, 'homeactive' => 'active', 'titulo' => 'Importación en XML'));*/
     }
