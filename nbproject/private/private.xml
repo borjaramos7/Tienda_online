@@ -5,10 +5,13 @@
         <group>
             <file>file:/C:/xampp/htdocs/Tienda_online/application/controllers/Exp_impXML.php</file>
             <file>file:/C:/xampp/htdocs/Tienda_online/application/controllers/Impexcel.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda_online/application/controllers/Cont_pedido.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda_online/application/controllers/Cont_Carrito.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda_online/application/models/modelo_tv.php</file>
             <file>file:/C:/xampp/htdocs/Tienda_online/application/views/vista_principal.php</file>
-            <file>file:/C:/xampp/htdocs/Tienda_online/Apuntes</file>
+            <file>file:/C:/xampp/htdocs/Tienda_online/application/libraries/Pdf.php</file>
             <file>file:/C:/xampp/htdocs/Tienda_online/application/views/importarDatos.php</file>
-            <file>file:/C:/xampp/htdocs/Tienda_online/application/models/Modelo_tv.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda_online/Apuntes</file>
         </group>
     </open-files>
 </project-private>

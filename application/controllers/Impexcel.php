@@ -57,7 +57,7 @@ class Impexcel extends CI_Controller {
                     case 11:$pro['fechafin'] = $worksheet->getCellByColumnAndRow($col, $fila)->getValue();break;
                     case 12:$pro['oculto'] = $worksheet->getCellByColumnAndRow($col, $fila)->getValue();break;
                     }
-                    }
+                }
                     $this->Modelo_tv->AddProducto($pro);
         
             }//echo "</pre>".print_r($pro)."</pre>";

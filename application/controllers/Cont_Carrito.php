@@ -1,4 +1,8 @@
+
 <?php
+/***
+ * Este controlador sera el encargado de manejar todo lo relacionado con el carrito
+ */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Cont_Carrito extends CI_Controller {
@@ -7,7 +11,11 @@ class Cont_Carrito extends CI_Controller {
 	{
 		
 	}
-        
+        /**
+         * Recibe la id de un producto y llama a una vista pasandole un array con los datos de dicho producto 
+         * previamente sacado con una llamada al modelo.
+         * @param type $id_pro
+         */
         public function VerProducto($id_pro) {
                 $prod=$this->Modelo_tv->SacaProducto($id_pro); 
 		$this->CargaPlantilla(
@@ -16,9 +24,11 @@ class Cont_Carrito extends CI_Controller {
                         ), TRUE),$prod->nombrepro
                         );
         }
-        
+        /**
+         * Funcion invocada cuando metemos un producto en el carrito y que se encargada de ,utilizando la
+         * libreria carrito , meter los datos del producto en el carrito.
+         */
          public function MeteCarrito() {
-             //$prod=$this->Modelo_tv->SacaProducto($this->input->post('idpro')); 
              $datosprod=array(
                 "id"=>$this->input->post('idpro'),
 		"cantidad"=>$this->input->post('cantidad'),
@@ -29,6 +39,10 @@ class Cont_Carrito extends CI_Controller {
             $this->Muestracarrito();
             
             }
+            /**
+             * Saca los datos del carrito , añade el nombre del producto a esos datos y llama a la
+             * vista que muestra el carrito.
+             */
            public function MuestraCarrito() {
            
             $datos_carrito=$this->carrito->get_content();
@@ -42,11 +56,17 @@ class Cont_Carrito extends CI_Controller {
                             'precio_total'=>$pretotal,
                             ),TRUE),"Tienes en tu carrito...");
             } 
+            /**
+             * Vacia el carrito
+             */
             public function LimpiaCarrito() {
                 $this->carrito->destroy();
                 redirect('','location',301);
             }
-            
+            /**
+             * Recibe la "idunique" de un producto del carrito y lo elimina del carrito
+             * @param type $idunica
+             */
             public function EliminaProd($idunica) {
                 $this->carrito->remove_producto($idunica);
 
@@ -60,6 +80,11 @@ class Cont_Carrito extends CI_Controller {
                 }
                  
             }
+           /**
+            * Recibe un cuerpo y un encabezado y le pasa estos unido a las categorias a la vista principal.
+            * @param type $cuerpo
+            * @param type $encabezado
+            */
            protected function CargaPlantilla($cuerpo='',$encabezado="") {
             $categ=$this->Modelo_tv->Categorias();
             $this->load->view('vista_principal',array(

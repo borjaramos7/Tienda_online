@@ -4,7 +4,6 @@ dni valido**
 Mejorar contraseña**
 modificar usuario**
 fechas destacados**
-Meter datos
 paginacion--Con esto estas
 dar formato a los errores**
 encabezado para el cuerpo**
@@ -14,8 +13,9 @@ Redirect de carrito
 controlar stock**
 importar xml**
 pagina de error en login incorrecto**
-Pedidos--correo y mejora la vista
+Pedidos**
 PASAR ENCABEZADO**
 Libreria PDF-- dejarlo mas presentable
 Importarexcel--arregla el foreach
-comentar y generar documentacion
+comentar y generar documentacion--vas comentando por Cont_user
+Meter datos

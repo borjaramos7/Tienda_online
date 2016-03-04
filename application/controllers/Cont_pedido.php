@@ -8,6 +8,10 @@ class Cont_pedido extends CI_Controller {
 		
 	}
         
+        /**
+         * Esta funcion se encarga de redirigir segun el caso (Si hay usuario logueado o no) ya sea a finalizar la compra 
+         * o a la pagina de registro o logueo.
+         */
         public function RealizaPedido() {
            $this->session->set_userdata('esta_comprando', true);
 
@@ -21,7 +25,10 @@ class Cont_pedido extends CI_Controller {
                         $this->load->view('Reg_o_login',"",TRUE));
            }
         }
-        
+        /**
+         * Saca los datos de la sesion y del carrito actuales si la cantidad es correcta procede a insertar los datos 
+         * necesarios en la tabla de pedidos.
+         */
         public function Finaliza_Compra() {
             $datos_usuario = $this->session->all_userdata();
             $datos_carrito = $this->carrito->get_content();
@@ -51,15 +58,18 @@ class Cont_pedido extends CI_Controller {
                      $this->Modelo_tv->AjustaStock($producto['id'],$producto['cantidad']); 
                 }
                 $this->PdfPedido($cod_pedido,true);
-                $this->EnviarCor($cod_pedido);
+                $this->EnviarCor();
                 $this->carrito->destroy();
+                //$this->CargaPlantilla("",true,"aaa");
                 }
-                //$this->MuestraPedido($cod_pedido);
+                
         }
         
             }    
-
-
+            
+            /**
+             * Muestra la lista de pedidos de un usuario
+             */
             public function MuestraPedido() {
             $datos_usuario = $this->session->all_userdata();
             
@@ -74,6 +84,12 @@ class Cont_pedido extends CI_Controller {
                         ),TRUE));
             }
             
+            /**
+             * Recibe la id de un pedido y un booleano indicando si el pdf es para mostrar o para enviarlo por correo
+             * realiza la llamada a la libreria pdf pasandole los datos del pedido y el booleano
+             * @param type $idpedido
+             * @param type $escorreo
+             */
             public function PdfPedido($idpedido,$escorreo=false) {
                 $pedido=$this->Modelo_tv->SacaPedidoPorID($idpedido);
                 //$pedido['lineas']=$this->Modelo_tv->SacaLinPedido($pedido['idpedido']);
@@ -96,7 +112,10 @@ class Cont_pedido extends CI_Controller {
                 //redirect('/Cont_pedido/MuestraPedido','location',301);
                
             }
-            
+            /**
+             * Recibe la id de un pedido y cambia su estado a anulado mediante una llamada al modelo.
+             * @param type $idpedido
+             */
             public function AnulaPedido($idpedido) {
                 $this->Modelo_tv->AnulaPedido($idpedido);
                 redirect('/Cont_pedido/MuestraPedido','location',301);
@@ -110,8 +129,11 @@ class Cont_pedido extends CI_Controller {
                 'encabezado'=>$encabezado
                 ));   
            }
-           
-           public function EnviarCor($codigopedido)
+           /**
+            * Envia un correo con los datos del pedido a la direccion que el usuario tiene insertada en la base
+            * de datos
+            */
+           public function EnviarCor()
 	{
                $datos_usuario = $this->session->all_userdata();
                
