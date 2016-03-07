@@ -1,3 +1,4 @@
+<!-- Vista base donde esta el cuerpo y encabezado que modificamos desde los controaldores. -->
 <!DOCTYPE html>
 <html lang="en">
 

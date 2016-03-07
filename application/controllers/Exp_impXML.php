@@ -1,4 +1,7 @@
 <?php
+/**
+ * Controlador dedicado a la exportacion e importacion de XML
+ */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Exp_impXML extends CI_Controller {
@@ -6,7 +9,10 @@ class Exp_impXML extends CI_Controller {
     public function index() {
         
     }
-
+/**
+ * Con una llamada al modelo saca las categorias actuales y las inserta en un XML
+ * esta funcion se encarga de ,una vez que este completo crear el fichero xml.
+ */
 function exporta_cat() {
         
         $categorias = $this->Modelo_tv->Categorias();
@@ -33,7 +39,12 @@ function exporta_cat() {
     }
 
 
-
+/**
+ * Esta funcion es llamada en el for de la funcion anterior para cada categoria y recibe la etiqueta de la que es hijo
+ * ($catxml) y la id de la categoria para que pueda sacar los productos de la categoria adecuada
+ * @param type $catxml
+ * @param type $idcateg
+ */
 function IncluyeArticulos($catxml,$idcateg) {
         
         
@@ -53,6 +64,9 @@ function IncluyeArticulos($catxml,$idcateg) {
         }
     
     }
+     /**
+      * Se encarga de llamar a la vista de importar datos pasandole la funcion que tiene que procesar el archivo subido
+      */
     public function importar() {
         
         $action = "/Exp_impXML/Procesa";
@@ -63,7 +77,11 @@ function IncluyeArticulos($catxml,$idcateg) {
         /*$cuerpo = $this->load->view('importarXML', Array('' => ''), true);
         $this->load->view('View_plantilla', Array('cuerpo' => $cuerpo, 'homeactive' => 'active', 'titulo' => 'Importación en XML'));*/
     }
-
+    
+    /**
+     * Coge el archivo subido especifica que se trata de un xml y llama a la funcion que se encarga
+     * de insertarlo en la BBDD
+     */
     public function Procesa() {
 
         $archivo = $_FILES['uploadedfile'];
@@ -80,7 +98,10 @@ function IncluyeArticulos($catxml,$idcateg) {
         }
     }
 
-    
+    /**
+     * Recibe el xml con los datos a insertar y le pasa los datos necesarios al modelo para su insercion
+     * @param type $xml
+     */
     function InsertaXMLEnBBDD($xml) {
 
         foreach ($xml as $categoria) {

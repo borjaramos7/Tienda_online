@@ -1,3 +1,4 @@
+<!-- Vista del carrito -->
 <html>
     <head>
     </head>

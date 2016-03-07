@@ -1,5 +1,5 @@
+<!-- Vista general de un producto -->
 <html>
-
 <head>
 </head>
 <body>

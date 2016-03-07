@@ -1,3 +1,4 @@
+<!-- Vista para subir ficheros ya sean xml o excel -->
 <form enctype="multipart/form-data" action="<?=site_url().$action; ?>" method="POST">
 <input name="uploadedfile" type="file" />
 <br>

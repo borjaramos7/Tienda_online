@@ -1,3 +1,4 @@
+<!-- Vista para registrarse o loguearse para realizar un pedido -->
 <html lang="en">
 
     <head>

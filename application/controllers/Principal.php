@@ -1,4 +1,7 @@
 <?php
+/**
+ * Controlador de productos
+ */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Principal extends CI_Controller {
@@ -12,7 +15,10 @@ class Principal extends CI_Controller {
                         ), TRUE)
                         );  
 	}
-        
+        /**
+         * Recibe una id y saca los productos que sean de esa categoria para mandarselos a la vista que los muestra
+         * @param type $categoria_id
+         */
         public function VerCategoria($categoria_id) {
                 $producto=$this->Modelo_tv->ProductosCategoria($categoria_id);
 		$this->CargaPlantilla(
@@ -21,7 +27,9 @@ class Principal extends CI_Controller {
                         ), TRUE),"Moviles ".$this->Modelo_tv->SacaNombreCat($categoria_id)
                         );
         }
-        
+        /**
+         * Llama a la vista que carga los productos pasandole un array con los prodcutos destacados
+         */
         public function VerDestacado() {
                 $producto=$this->Modelo_tv->ProDestacados(); 
 		$this->CargaPlantilla(

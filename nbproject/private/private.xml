@@ -3,15 +3,27 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/Tienda_online/application/controllers/Exp_impXML.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda_online/application/views/reg_user.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda_online/application/views/Vistacarrito.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda_online/application/views/Vistapedido.php</file>
             <file>file:/C:/xampp/htdocs/Tienda_online/application/controllers/Impexcel.php</file>
-            <file>file:/C:/xampp/htdocs/Tienda_online/application/controllers/Cont_pedido.php</file>
-            <file>file:/C:/xampp/htdocs/Tienda_online/application/controllers/Cont_Carrito.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda_online/application/controllers/Cont_user.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda_online/application/views/productos.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda_online/application/views/Reg_o_login.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda_online/application/controllers/Principal.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda_online/application/libraries/Carrito.php</file>
             <file>file:/C:/xampp/htdocs/Tienda_online/application/models/modelo_tv.php</file>
             <file>file:/C:/xampp/htdocs/Tienda_online/application/views/vista_principal.php</file>
             <file>file:/C:/xampp/htdocs/Tienda_online/application/libraries/Pdf.php</file>
             <file>file:/C:/xampp/htdocs/Tienda_online/application/views/importarDatos.php</file>
-            <file>file:/C:/xampp/htdocs/Tienda_online/Apuntes</file>
+            <file>file:/C:/xampp/htdocs/Tienda_online/application/helpers/dni_helper.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda_online/application/views/login.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda_online/application/controllers/Exp_impXML.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda_online/application/controllers/Cont_pedido.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda_online/application/views/unprod.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda_online/application/views/Mod_user.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda_online/application/views/logueadoexito.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda_online/application/views/index.html</file>
         </group>
     </open-files>
 </project-private>

@@ -1,8 +1,19 @@
 <?php
+/**
+ * Libreria con las funciones de PDF que extiende de FPDF
+ */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Pdf extends FPDF {
         
+        
+        /**
+         * Recibe un array con los datos del pedido otro con las lineas de dicho pedido y un booleano que le 
+         * indica si el pdf es para mostrar o para enviar por correo y se encarga de rellenar el pdf con los datos recibidos
+         * @param type $pedido
+         * @param type $lineas
+         * @param type $enviar
+         */
         public function PedidoPdf($pedido,$lineas,$enviar=false) {
             
                 

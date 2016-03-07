@@ -1,6 +1,14 @@
-
+<!-- Vista en detalle de un producto -->
     
-<?php  function PrecioFinal($precio,$desc,$iva){
+<?php  
+/**
+ * Recibe el precio,descuento e iva de un producto y devuelve su precio definitivo
+ * @param type $precio
+ * @param type $desc
+ * @param type $iva
+ * @return type
+ */
+function PrecioFinal($precio,$desc,$iva){
             $preciofi=$precio-($precio/100*$desc)+($precio/100*$iva);
     return $preciofi;
     } 

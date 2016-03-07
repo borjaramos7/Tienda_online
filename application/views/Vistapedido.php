@@ -1,3 +1,4 @@
+<!-- Vista con los pedidos de un usuario -->
 <html>
     <head>
     </head>

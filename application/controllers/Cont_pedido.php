@@ -1,4 +1,7 @@
 <?php
+/**
+ * Fichero encargado de manejar las funciones de los pedidos
+ */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Cont_pedido extends CI_Controller {
@@ -60,7 +63,7 @@ class Cont_pedido extends CI_Controller {
                 $this->PdfPedido($cod_pedido,true);
                 $this->EnviarCor();
                 $this->carrito->destroy();
-                //$this->CargaPlantilla("",true,"aaa");
+                $this->CargaPlantilla("","Su pedido ha sido realizado y enviado a su correo,gracias.");
                 }
                 
         }

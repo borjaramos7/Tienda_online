@@ -1,4 +1,5 @@
-<html>
+<!-- Vista para modificar usuarios -->
+<html>  
 <head>
     <title>Formulario</title>
     <meta charset="utf-8">

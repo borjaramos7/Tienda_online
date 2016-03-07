@@ -1,7 +1,8 @@
+<!-- Vista del registro de un usuario -->
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Formulario</title>
+    <title></title>
     <meta charset="utf-8">
     <link type="text/css" href="./../css/style.css" rel="stylesheet" />
 </head>

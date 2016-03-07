@@ -1,4 +1,7 @@
 <?php
+/**
+ * Fichero encargado de la importacion de un Excel
+ */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Impexcel extends CI_Controller {
@@ -11,7 +14,9 @@ class Impexcel extends CI_Controller {
                 'encabezado'=>$encabezado
                 ));   
            }
-    
+    /**
+     * Se encarga de llamar a la vista de importar datos pasandole la funcion que tiene que procesar el archivo subido
+     */
     public function importaexcel() {
         $action = "/Impexcel/Procesaexcel";
         
@@ -20,12 +25,16 @@ class Impexcel extends CI_Controller {
                         'action' => $action
                             ),TRUE),"Selecciona un archivo para importar(Excel)");
     }
-    
+    /**
+     * Recoge el archivo subido,le indica la hoja activa y procede a coger los datos en las posiciones que le indicamos
+     * para su posterior insertado en la BBDD.
+     */
     public function Procesaexcel() {
         $archivo = $_FILES['uploadedfile'];
         $ExcelPHP = PHPExcel_IOFactory::load($archivo['tmp_name']);
-        foreach ($ExcelPHP->getWorksheetIterator() as $worksheet) {
-            //$worksheet=$ExcelPHP->getWorksheetIterator();
+        //foreach ($ExcelPHP->getWorksheetIterator() as $worksheet) {
+            $ExcelPHP->setActiveSheetIndex(0);
+            $worksheet = $ExcelPHP->getActiveSheet();
             $cat['codcat'] = $worksheet->getCellByColumnAndRow(4,3)->getValue();
             $cat['nombrecat'] = $worksheet->getCellByColumnAndRow(5,3)->getValue();
             $cat['descrip_cat'] = $worksheet->getCellByColumnAndRow(6,3)->getValue();
@@ -59,9 +68,9 @@ class Impexcel extends CI_Controller {
                     }
                 }
                     $this->Modelo_tv->AddProducto($pro);
-        
-            }//echo "</pre>".print_r($pro)."</pre>";
+                    
+            }
+            $this->CargaPlantilla(" ","Excel importado con exito");
         }
     }
       
-}

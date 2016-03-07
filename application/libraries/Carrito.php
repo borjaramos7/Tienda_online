@@ -1,4 +1,7 @@
 <?php
+/**
+ * Libreria donde estan las funciones del carrito
+ */
 //session_start();
  
 class Carrito
